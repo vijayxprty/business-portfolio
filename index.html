@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vijay Kumar — Design for Businesses | Logo, Website, App &amp; Landing Page Design</title>
+<meta name="description" content="Logo design, banner design, website design, app design, landing page design and social media posts for small and local businesses. Simple, modern design that helps customers trust you and get in touch.">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --navy: #0b2239;
+  --navy2: #12324f;
+  --teal: #0e9a8b;
+  --teal-dark: #0b7d72;
+  --amber: #f2a93b;
+  --amber-dark: #d98f1d;
+  --bg: #f7f5f0;
+  --card: #ffffff;
+  --ink: #16283c;
+  --muted: #5a6b7d;
+  --line: #e3ddd2;
+  --soft: #eef4f3;
+}
+html { scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: var(--bg); color: var(--ink); line-height: 1.55; }
+a { color: var(--teal-dark); }
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+header { position: sticky; top: 0; z-index: 20; background: #ffffff; border-bottom: 1px solid var(--line); }
+.nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 20px; }
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--ink); }
+.mark { width: 44px; height: 44px; border-radius: 12px; background: var(--navy); color: #ffffff; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 20px; letter-spacing: .5px; }
+.brand b { font-size: 18px; display: block; line-height: 1.2; color: var(--ink); }
+.brand span { font-size: 13px; color: var(--muted); display: block; }
+.brand .mark { display: flex; align-items: center; justify-content: center; font-size: 20px; color: #ffffff; }
+.navlinks { display: flex; gap: 22px; align-items: center; }
+.navlinks a { text-decoration: none; color: var(--ink); font-size: 15px; font-weight: 600; }
+.navlinks a.btn-navy { color: #ffffff; }
+.navlinks a:hover { color: var(--teal-dark); }
+.navlinks a.btn-navy:hover { color: #ffffff; }
+.btn { display: inline-block; text-decoration: none; font-weight: 700; border-radius: 999px; padding: 12px 22px; font-size: 15px; border: 2px solid transparent; cursor: pointer; }
+.btn-amber { background: var(--amber); color: #231600; }
+.btn-amber:hover { background: #f7bc5e; }
+.btn-navy { background: var(--navy); color: #ffffff; }
+.btn-navy:hover { background: var(--navy2); }
+.btn-ghost { background: #ffffff; color: var(--ink); border-color: var(--ink); }
+.btn-sm { padding: 9px 16px; font-size: 14px; }
+.hero { background: var(--navy); color: #ffffff; }
+.hero-inner { padding: 64px 0 56px; display: grid; grid-template-columns: 1.15fr .85fr; gap: 40px; align-items: start; }
+.eyebrow { display: inline-block; background: #ffffff1f; color: #ffe9b8; border: 1px solid #ffffff33; padding: 7px 12px; border-radius: 999px; font-size: 13px; font-weight: 700; letter-spacing: .4px; }
+.hero h1 { font-size: 52px; line-height: 1.05; letter-spacing: -1.2px; margin: 18px 0 16px; color: #ffffff; }
+.hero h1 em { font-style: normal; color: var(--amber); }
+.hero p.lead { font-size: 19px; line-height: 1.6; color: #d7e3ee; max-width: 620px; }
+.hero-cta { display: flex; gap: 12px; flex-wrap: wrap; margin: 26px 0 18px; }
+.hero-note { font-size: 14px; color: #a9bdd0; }
+.hero-card { background: #ffffff; color: var(--ink); border-radius: 18px; padding: 24px; box-shadow: 0 18px 40px rgba(0,0,0,.25); }
+.hero-card h2 { font-size: 20px; margin-bottom: 6px; color: var(--ink); }
+.hero-card p { color: var(--muted); font-size: 15px; margin-bottom: 16px; }
+.check { list-style: none; display: grid; gap: 10px; margin-bottom: 18px; }
+.check li { display: flex; gap: 10px; font-size: 15px; font-weight: 600; color: var(--ink); }
+.check li::before { content: "✓"; color: var(--teal); font-weight: 800; }
+.mini { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.mini div { background: var(--soft); border-radius: 12px; padding: 12px; }
+.mini b { display: block; font-size: 14px; color: var(--ink); }
+.mini span { font-size: 13px; color: var(--muted); }
+section { padding: 56px 0; }
+.section-head { max-width: 720px; margin-bottom: 28px; }
+.section-head h2 { font-size: 34px; line-height: 1.15; letter-spacing: -.6px; margin-bottom: 10px; color: var(--ink); }
+.section-head p { font-size: 17px; color: var(--muted); }
+.kicker { font-size: 13px; font-weight: 800; letter-spacing: 1.2px; text-transform: uppercase; color: var(--teal-dark); margin-bottom: 8px; }
+.logostrip { background: #ffffff; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 22px 0; }
+.logostrip p { text-align: center; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+.logos { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+.logo-pill { background: var(--bg); border: 1px solid var(--line); border-radius: 999px; padding: 9px 15px; font-size: 14px; font-weight: 700; color: var(--ink); text-decoration: none; }
+.logo-pill:hover { border-color: var(--teal); color: var(--teal-dark); }
+.grid-services { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 24px; }
+.card h3 { font-size: 20px; margin: 12px 0 8px; color: var(--ink); }
+.card p { font-size: 15px; color: var(--muted); }
+.icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; background: var(--soft); }
+.more-services { margin-top: 16px; background: var(--navy); color: #ffffff; border-radius: 18px; padding: 24px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; }
+.more-services h3 { color: #ffffff; font-size: 20px; }
+.more-services p { color: #c8d6e2; font-size: 15px; max-width: 620px; }
+.tag { display: inline-block; background: #ffffff1a; border: 1px solid #ffffff33; color: #ffffff; border-radius: 999px; padding: 7px 12px; font-size: 13px; font-weight: 600; }
+.brands-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
+.brand-tile { background: #ffffff; border: 1px solid var(--line); border-radius: 16px; padding: 20px 16px; text-align: center; text-decoration: none; color: var(--ink); }
+.brand-tile:hover { border-color: var(--teal); }
+.brand-tile .initials { width: 52px; height: 52px; margin: 0 auto 12px; border-radius: 50%; background: var(--navy); color: #ffffff; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 18px; }
+.brand-tile:nth-child(3n) .initials { background: var(--teal); }
+.brand-tile:nth-child(4n) .initials { background: #7a5a1e; }
+.brand-tile b { display: block; font-size: 15px; line-height: 1.3; }
+.brand-tile span { font-size: 13px; color: var(--muted); }
+.filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+.filter-btn { border: 1px solid var(--line); background: #ffffff; color: var(--ink); border-radius: 999px; padding: 9px 15px; font-size: 14px; font-weight: 700; cursor: pointer; }
+.filter-btn.active, .filter-btn:hover { background: var(--navy); color: #ffffff; border-color: var(--navy); }
+.work-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.work-card { background: #ffffff; border: 1px solid var(--line); border-radius: 18px; padding: 22px; display: flex; flex-direction: column; gap: 10px; }
+.work-card.hidden { display: none; }
+.work-top { display: flex; justify-content: space-between; gap: 12px; align-items: flex-start; }
+.work-card h3 { font-size: 20px; color: var(--ink); }
+.work-card h3 a { color: var(--ink); text-decoration: none; }
+.work-card h3 a:hover { color: var(--teal-dark); text-decoration: underline; }
+.work-card p { font-size: 15px; color: var(--muted); }
+.work-tag { flex-shrink: 0; background: var(--soft); color: var(--teal-dark); border-radius: 999px; padding: 6px 10px; font-size: 12px; font-weight: 800; }
+.work-link { font-weight: 700; font-size: 14px; }
+.featured { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+.featured-card { background: var(--navy); color: #ffffff; border-radius: 18px; padding: 26px; text-decoration: none; display: block; }
+.featured-card h3 { color: #ffffff; font-size: 22px; margin-bottom: 8px; }
+.featured-card p { color: #c8d6e2; font-size: 15px; margin-bottom: 14px; }
+.featured-card span { color: var(--amber); font-weight: 700; font-size: 14px; }
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.step-num { width: 40px; height: 40px; border-radius: 50%; background: var(--amber); color: #231600; font-weight: 800; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; }
+.contact { background: var(--navy); color: #ffffff; border-radius: 22px; padding: 40px; text-align: center; }
+.contact h2 { color: #ffffff; font-size: 34px; line-height: 1.15; margin-bottom: 12px; }
+.contact p { color: #c8d6e2; font-size: 17px; max-width: 640px; margin: 0 auto 24px; }
+.contact .btn { margin: 4px; }
+.contact small { display: block; margin-top: 18px; color: #a9bdd0; font-size: 14px; }
+.contact small a { color: #ffffff; }
+footer { padding: 28px 0 36px; color: var(--muted); font-size: 14px; }
+.foot { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+footer a { color: var(--ink); }
+@media (max-width: 860px) {
+  .hero-inner { grid-template-columns: 1fr; padding: 44px 0 40px; }
+  .hero h1 { font-size: 38px; }
+  .grid-services { grid-template-columns: 1fr; }
+  .brands-grid { grid-template-columns: repeat(2, 1fr); }
+  .work-grid, .featured, .steps { grid-template-columns: 1fr; }
+  .navlinks a:not(.btn) { display: none; }
+  section { padding: 40px 0; }
+  .contact { padding: 28px 20px; }
+  .contact h2 { font-size: 28px; }
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top">
+      <span class="mark">VK</span>
+      <span><b>Vijay Kumar</b><span>Design for businesses</span></span>
+    </a>
+    <nav class="navlinks" aria-label="Main">
+      <a href="#services">Services</a>
+      <a href="#work">Work</a>
+      <a href="#brands">Brands</a>
+      <a href="#how">How it works</a>
+      <a class="btn btn-navy btn-sm" href="#contact">Get a free preview</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap hero-inner">
+      <div>
+        <span class="eyebrow">For local &amp; small businesses</span>
+        <h1>Your business deserves a <em>better look.</em></h1>
+        <p class="lead">Logo, banner, website, app and landing page design that makes customers trust you, remember you, and get in touch. Modern, mobile-first, and made for your business, not a template.</p>
+        <div class="hero-cta">
+          <a class="btn btn-amber" href="https://wa.me/919041961669?text=Hi%20Vijay%2C%20I%20want%20a%20quick%20preview%20for%20my%20business." target="_blank" rel="noopener">Chat on WhatsApp</a>
+          <a class="btn btn-ghost" href="mailto:jaynishad2010@gmail.com?subject=Design%20preview%20for%20my%20business" style="background:transparent;color:#ffffff;border-color:#ffffff;">Email me</a>
+        </div>
+        <p class="hero-note">Send your website or Instagram link. I will show you one clear improvement first, before you pay anything.</p>
+      </div>
+      <div class="hero-card">
+        <h2>What you get</h2>
+        <p>A clean, modern design for the exact thing your customers see first.</p>
+        <ul class="check">
+          <li>A design that looks good on phone and computer</li>
+          <li>Clear buttons to call, order, or enquire</li>
+          <li>A quick preview before you decide</li>
+          <li>Files ready for your website, print, and social media</li>
+        </ul>
+        <div class="mini">
+          <div><b>Logo &amp; Banner</b><span>For your shop, site &amp; socials</span></div>
+          <div><b>Website &amp; App</b><span>Modern pages that load clean</span></div>
+          <div><b>Landing Page</b><span>Built around one offer</span></div>
+          <div><b>Social Posts</b><span>Ready to post, on brand</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="logostrip">
+    <div class="wrap">
+      <p>Brands referenced in this portfolio</p>
+      <div class="logos">
+        <a class="logo-pill" href="https://facegym.com" target="_blank" rel="noopener">FaceGym</a>
+        <a class="logo-pill" href="https://naamastudios.com" target="_blank" rel="noopener">Naama Studios</a>
+        <a class="logo-pill" href="https://bbb-london.com" target="_blank" rel="noopener">BBB London</a>
+        <a class="logo-pill" href="https://reallygoodboxedwine.com" target="_blank" rel="noopener">Really Good Boxed Wine</a>
+        <a class="logo-pill" href="https://drinkwelluk.com" target="_blank" rel="noopener">DrinkWell</a>
+        <a class="logo-pill" href="https://experimentalperfumeclub.com" target="_blank" rel="noopener">Experimental Perfume Club</a>
+        <a class="logo-pill" href="https://soandmo.com" target="_blank" rel="noopener">So and Mo</a>
+        <a class="logo-pill" href="https://stretch-lab.co.uk" target="_blank" rel="noopener">Stretch Lab</a>
+        <a class="logo-pill" href="https://tomhixson.co.uk" target="_blank" rel="noopener">Tom Hixson</a>
+        <a class="logo-pill" href="https://trepadora.com" target="_blank" rel="noopener">Trepadora</a>
+        <a class="logo-pill" href="https://smileymovement.com" target="_blank" rel="noopener">Smiley Movement</a>
+        <a class="logo-pill" href="https://oneloveorganics.com" target="_blank" rel="noopener">One Love Organics</a>
+        <a class="logo-pill" href="https://naturemetrics.com" target="_blank" rel="noopener">NatureMetrics</a>
+        <a class="logo-pill" href="https://filmpass.com" target="_blank" rel="noopener">FilmPass</a>
+        <a class="logo-pill" href="https://imaa-institute.org" target="_blank" rel="noopener">IMAA Institute</a>
+      </div>
+    </div>
+  </div>
+
+  <section id="services">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="kicker">Services</p>
+        <h2>What I can design for your business</h2>
+        <p>Pick one thing, or a full refresh. Every design is made for your customers, your offer, and your brand.</p>
+      </div>
+      <div class="grid-services">
+        <div class="card"><div class="icon">◐</div><h3>Logo Design</h3><p>A clean, memorable logo that works on your shop board, website, visiting card, and social media.</p></div>
+        <div class="card"><div class="icon">▭</div><h3>Banner Design</h3><p>Banners for your website, shop, Google profile, and social media that say what you do in seconds.</p></div>
+        <div class="card"><div class="icon">⌂</div><h3>Website Design</h3><p>A modern website that is easy to read on a phone, shows your work clearly, and makes it easy to contact you.</p></div>
+        <div class="card"><div class="icon">▣</div><h3>App Design</h3><p>Simple, easy-to-use app screens for your customers, from home screen to checkout or booking.</p></div>
+        <div class="card"><div class="icon">◎</div><h3>Landing Page Design</h3><p>One focused page for one offer, with a clear headline, your benefits, and a clear button to act.</p></div>
+        <div class="card"><div class="icon">✦</div><h3>Social Media Posts</h3><p>Posts, stories, and creatives in your brand style, ready to share on Instagram, Facebook, and WhatsApp.</p></div>
+      </div>
+      <div class="more-services">
+        <div><h3>And many more things</h3><p>Business cards, flyers and posters, menu design, brochures, brand kits, website redesign, and a full UI audit of your current site or app. If it is design, ask me.</p></div>
+        <div>
+          <span class="tag">Business cards</span>
+          <span class="tag">Flyers</span>
+          <span class="tag">Menus</span>
+          <span class="tag">Brochures</span>
+          <span class="tag">Brand kit</span>
+          <span class="tag">UI audit</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="brands" style="padding-top:0;">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="kicker">Featured brands</p>
+        <h2>Brands referenced for the main work</h2>
+        <p>These are the brands used as the main reference for the images and logos in this portfolio. Tap any name to visit their site.</p>
+      </div>
+      <div class="brands-grid">
+        <a class="brand-tile" href="https://facegym.com" target="_blank" rel="noopener"><span class="initials">FG</span><b>FaceGym</b><span>facegym.com</span></a>
+        <a class="brand-tile" href="https://naamastudios.com" target="_blank" rel="noopener"><span class="initials">NS</span><b>Naama Studios</b><span>naamastudios.com</span></a>
+        <a class="brand-tile" href="https://bbb-london.com" target="_blank" rel="noopener"><span class="initials">BB</span><b>BBB London</b><span>bbb-london.com</span></a>
+        <a class="brand-tile" href="https://reallygoodboxedwine.com" target="_blank" rel="noopener"><span class="initials">RG</span><b>Really Good Boxed Wine</b><span>reallygoodboxedwine.com</span></a>
+        <a class="brand-tile" href="https://drinkwelluk.com" target="_blank" rel="noopener"><span class="initials">DW</span><b>DrinkWell</b><span>drinkwelluk.com</span></a>
+        <a class="brand-tile" href="https://experimentalperfumeclub.com" target="_blank" rel="noopener"><span class="initials">EP</span><b>Experimental Perfume Club</b><span>experimentalperfumeclub.com</span></a>
+        <a class="brand-tile" href="https://soandmo.com" target="_blank" rel="noopener"><span class="initials">SM</span><b>So and Mo</b><span>soandmo.com</span></a>
+        <a class="brand-tile" href="https://stretch-lab.co.uk" target="_blank" rel="noopener"><span class="initials">SL</span><b>Stretch Lab</b><span>stretch-lab.co.uk</span></a>
+        <a class="brand-tile" href="https://tomhixson.co.uk" target="_blank" rel="noopener"><span class="initials">TH</span><b>Tom Hixson</b><span>tomhixson.co.uk</span></a>
+        <a class="brand-tile" href="https://trepadora.com" target="_blank" rel="noopener"><span class="initials">TR</span><b>Trepadora</b><span>trepadora.com</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="work" style="padding-top:0;">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="kicker">Selected work</p>
+        <h2>Websites and apps I have designed</h2>
+        <p>Real projects, with the exact work done on each one. Use the filters to see websites or apps only.</p>
+      </div>
+
+      <div class="featured">
+        <a class="featured-card" href="https://everythingict.org/" target="_blank" rel="noopener"><h3>Everything ICT</h3><p>Procurement services for schools and trusts. Mega menu and website design.</p><span>Visit everythingict.org →</span></a>
+        <a class="featured-card" href="https://inklessideas.co.uk" target="_blank" rel="noopener" style="background:#0e9a8b;"><h3>Inkless Ideas</h3><p>Design studio site. Website design and brand work.</p><span>Visit inklessideas.co.uk →</span></a>
+      </div>
+
+      <div class="filters" role="group" aria-label="Filter work">
+        <button class="filter-btn active" data-filter="all">All work</button>
+        <button class="filter-btn" data-filter="website">Websites</button>
+        <button class="filter-btn" data-filter="app">Mobile apps</button>
+        <button class="filter-btn" data-filter="logo">Logo work</button>
+      </div>
+
+      <div class="work-grid" id="workGrid">
+        <article class="work-card" data-cat="website"><div class="work-top"><h3><a href="http://xcashrewards.com/en" target="_blank" rel="noopener">XCash Rewards</a></h3><span class="work-tag">Website</span></div><p>Design only. Rewards website design.</p><a class="work-link" href="http://xcashrewards.com/en" target="_blank" rel="noopener">Visit site →</a></article>
+        <article class="work-card" data-cat="app"><div class="work-top"><h3><a href="https://play.google.com/store/apps/details?id=customer.dlc.xcash" target="_blank" rel="noopener">XCash Mobile App</a></h3><span class="work-tag">App</span></div><p>Mobile app design. Rewards app on Google Play.</p><a class="work-link" href="https://play.google.com/store/apps/details?id=customer.dlc.xcash" target="_blank" rel="noopener">View on Google Play →</a></article>
+        <article class="work-card" data-cat="website"><div class="work-top"><h3><a href="https://midasmetals.app/" target="_blank" rel="noopener">Midas Metals</a></h3><span class="work-tag">Website</span></div><p>Design + HTML / WordPress.</p><a class="work-link" href="https://midasmetals.app/" target="_blank" rel="noopener">Visit site →</a></article>
+        <article class="work-card" data-cat="app"><div class="work-top"><h3><a href="https://xd.adobe.com/view/825f0605-5776-4329-61e5-9d13a762cd10-f46e/?fullscreen" target="_blank" rel="noopener">Midas Metals Mobile App</a></h3><span class="work-tag">App</span></div><p>Mobile app design. Adobe XD prototype.</p><a class="work-link" href="https://xd.adobe.com/view/825f0605-5776-4329-61e5-9d13a762cd10-f46e/?fullscreen" target="_blank" rel="noopener">View prototype →</a></article>
+        <article class="work-card" data-cat="app"><div class="work-top"><h3><a href="https://xd.adobe.com/view/4cada925-8dd4-497f-41e5-223b6531c684-3a9c/" target="_blank" rel="noopener">Earn On The Go</a></h3><span class="work-tag">App</span></div><p>Mobile app design. Adobe XD prototype.</p><a class="work-link" href="https://xd.adobe.com/view/4cada925-8dd4-497f-41e5-223b6531c684-3a9c/" target="_blank" rel="noopener">View prototype →</a></article>
+        <article class="work-card" data-cat="website"><div class="work-top"><h3><a href="https://vestarad.com/" target="_blank" rel="noopener">Vestarad</a></h3><span class="work-tag">Website</span></div><p>Design.</p><a class="work-link" href="https://vestarad.com/" target="_blank" rel="noopener">Visit site →</a></article>
+        <article class="work-card" data-cat="website"><div class="work-top"><h3><a href="https://www.graphickitchen.co.uk/" target="_blank" rel="noopener">Graphic Kitchen</a></h3><span class="work-tag">Website</span></div><p>Design.</p><a class="work-link" href="https://www.graphickitchen.co.uk/" target="_blank" rel="noopener">Visit site →</a></article>
+        <article class="work-card" data-cat="website logo"><div class="work-top"><h3><a href="https://www.bitclu.com/#/home" target="_blank" rel="noopener">Bitclu</a></h3><span class="work-tag">Website + Logo</span></div><p>Design + HTML / WordPress + Dashboard &amp; HTML with AngularJS 6. Logo design also.</p><a class="work-link" href="https://www.bitclu.com/#/home" target="_blank" rel="noopener">Visit site →</a></article>
+        <article class="work-card" data-cat="website"><div class="work-top"><h3><a href="https://www.elsewhere.se/" target="_blank" rel="noopener">Elsewhere</a></h3><span class="work-tag">Website</span></div><p>Design + HTML / WordPress.</p><a class="work-link" href="https://www.elsewhere.se/" target="_blank" rel="noopener">Visit site →</a></article>
+        <article class="work-card" data-cat="website"><div class="work-top"><h3><a href="https://www.dinkurs.se/" target="_blank" rel="noopener">Dinkurs</a></h3><span class="work-tag">Website</span></div><p>Design + HTML / WordPress.</p><a class="work-link" href="https://www.dinkurs.se/" target="_blank" rel="noopener">Visit site →</a></article>
+        <article class="work-card" data-cat="website"><div class="work-top"><h3><a href="http://familiasin.com/" target="_blank" rel="noopener">Familiasin</a></h3><span class="work-tag">Website</span></div><p>Design + HTML / Bootstrap with Angular 6 (Dashboard).</p><a class="work-link" href="http://familiasin.com/" target="_blank" rel="noopener">Visit site →</a></article>
+        <article class="work-card" data-cat="website"><div class="work-top"><h3><a href="https://www.eventry.com/" target="_blank" rel="noopener">Eventry</a></h3><span class="work-tag">Website</span></div><p>Design.</p><a class="work-link" href="https://www.eventry.com/" target="_blank" rel="noopener">Visit site →</a></article>
+        <article class="work-card" data-cat="app"><div class="work-top"><h3><a href="https://xd.adobe.com/view/e22c3baa-e6a5-47ad-6284-f90708c7a312-941d/" target="_blank" rel="noopener">Redi Health Mobile App</a></h3><span class="work-tag">App</span></div><p>Mobile app design. Adobe XD prototype.</p><a class="work-link" href="https://xd.adobe.com/view/e22c3baa-e6a5-47ad-6284-f90708c7a312-941d/" target="_blank" rel="noopener">View prototype →</a></article>
+        <article class="work-card" data-cat="website"><div class="work-top"><h3><a href="https://www.skale10capital.com/" target="_blank" rel="noopener">Skale10 Capital</a></h3><span class="work-tag">Website</span></div><p>Design.</p><a class="work-link" href="https://www.skale10capital.com/" target="_blank" rel="noopener">Visit site →</a></article>
+        <article class="work-card" data-cat="website"><div class="work-top"><h3><a href="https://happego.app/" target="_blank" rel="noopener">Happego</a></h3><span class="work-tag">Website</span></div><p>Design.</p><a class="work-link" href="https://happego.app/" target="_blank" rel="noopener">Visit site →</a></article>
+        <article class="work-card" data-cat="app"><div class="work-top"><h3><a href="https://play.google.com/store/apps/details?id=com.zoptal.hapego&amp;hl=en" target="_blank" rel="noopener">Happego Mobile App</a></h3><span class="work-tag">App</span></div><p>Mobile app design. Happego app on Google Play.</p><a class="work-link" href="https://play.google.com/store/apps/details?id=com.zoptal.hapego&amp;hl=en" target="_blank" rel="noopener">View on Google Play →</a></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="how" style="padding-top:0;">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="kicker">How it works</p>
+        <h2>Simple, no long meetings</h2>
+        <p>You see a preview first. You only go ahead when you like what you see.</p>
+      </div>
+      <div class="steps">
+        <div class="card"><div class="step-num">1</div><h3>Share your link</h3><p>Send your website, Instagram, or logo on WhatsApp or email. Tell me what you want: a new logo, a new website, or a full refresh.</p></div>
+        <div class="card"><div class="step-num">2</div><h3>Get a quick preview</h3><p>I will show you how your business could look, with one clear improvement, before you commit to anything.</p></div>
+        <div class="card"><div class="step-num">3</div><h3>Approve and go live</h3><p>You approve the design, I finish it, and you get files ready for your website, print, and social media.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" style="padding-top:0;">
+    <div class="wrap">
+      <div class="contact">
+        <h2>Want a quick preview for your business?</h2>
+        <p>Send your website or Instagram link. I will reply with one clear idea and a preview of how it could look.</p>
+        <a class="btn btn-amber" href="https://wa.me/919041961669?text=Hi%20Vijay%2C%20I%20want%20a%20quick%20preview%20for%20my%20business." target="_blank" rel="noopener">Chat on WhatsApp</a>
+        <a class="btn btn-ghost" href="mailto:jaynishad2010@gmail.com?subject=Design%20preview%20for%20my%20business" style="background:transparent;color:#ffffff;border-color:#ffffff;">jaynishad2010@gmail.com</a>
+        <small>Or call: <a href="tel:+919041961669">+91 90419 61669</a> · Vijay Kumar, Kharar, Punjab, India</small>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>© Vijay Kumar — Design for Businesses</span>
+    <span><a href="https://everythingict.org/" target="_blank" rel="noopener">Everything ICT</a> · <a href="https://inklessideas.co.uk" target="_blank" rel="noopener">Inkless Ideas</a> · <a href="mailto:jaynishad2010@gmail.com">Email</a></span>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.filter-btn').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    document.querySelectorAll('.filter-btn').forEach(function(b){ b.classList.remove('active'); });
+    btn.classList.add('active');
+    var f = btn.getAttribute('data-filter');
+    document.querySelectorAll('.work-card').forEach(function(card){
+      var cats = (card.getAttribute('data-cat') || '').split(' ');
+      card.classList.toggle('hidden', f !== 'all' && cats.indexOf(f) === -1);
+    });
+  });
+});
+</script>
+</body>
+</html>
