@@ -1,197 +1,22 @@
-/* Merged business portfolio interactions: theme, scenes, moods, compare, form, filters. */
-(function () {
-  var prefersReduced = matchMedia('(prefers-reduced-motion: reduce)');
+const filters=document.querySelectorAll('[data-filter]');filters.forEach(button=>button.addEventListener('click',()=>{filters.forEach(b=>{b.classList.toggle('active',b===button);b.setAttribute('aria-pressed',String(b===button))});document.querySelectorAll('[data-type]').forEach(card=>{card.hidden=button.dataset.filter!=='all'&&card.dataset.type!==button.dataset.filter})}));
+const moods=[['#e9e9df','#552b25','#efc29e','#d8ef70'],['#e4dfec','#463557','#f1d5bf','#f4b191'],['#d9e6e5','#214a43','#e8e5b4','#e9c563']];let mood=0;document.getElementById('remix').addEventListener('click',()=>{mood=(mood+1)%moods.length;const m=moods[mood];document.querySelector('.playground').style.background=m[0];document.querySelector('.brand-tile').style.background=m[1];document.querySelector('.brand-tile').style.color=m[2];document.querySelector('.phone').style.background=m[3];document.querySelector('.round-sticker').style.background=m[3]});
+document.getElementById('lead-form').addEventListener('submit',event=>{event.preventDefault();const business=document.getElementById('business').value.trim();if(!business){document.getElementById('business').setCustomValidity('Please enter your business name.');document.getElementById('business').reportValidity();return}const service=document.getElementById('service').value;const link=document.getElementById('link').value.trim();const message=`Hi Vijay! I’d love a free design preview.\n\nBusiness: ${business}\nLooking for: ${service}${link?'\nWebsite / Instagram: '+link:''}\n\nWhat would you suggest for my business?`;window.location.href='https://wa.me/919041961669?text='+encodeURIComponent(message)});document.getElementById('business').addEventListener('input',e=>e.target.setCustomValidity(''));
+const sticky=document.querySelector('.mobile-cta');const contactObserver=new IntersectionObserver(entries=>{entries.forEach(entry=>sticky.classList.toggle('hide',entry.isIntersecting))},{threshold:.05});contactObserver.observe(document.getElementById('contact'));document.getElementById('back-top').addEventListener('click',e=>{e.preventDefault();window.scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'})});document.getElementById('year').textContent=new Date().getFullYear();
 
-  /* --- Work filters --- */
-  var filterButtons = document.querySelectorAll('[data-filter]');
-  filterButtons.forEach(function (button) {
-    button.addEventListener('click', function () {
-      filterButtons.forEach(function (b) {
-        b.classList.toggle('active', b === button);
-        b.setAttribute('aria-pressed', String(b === button));
-      });
-      document.querySelectorAll('[data-cat]').forEach(function (card) {
-        card.classList.toggle('hidden', button.dataset.filter !== 'all' && card.dataset.cat !== button.dataset.filter);
-      });
-    });
-  });
+const themeButton=document.getElementById('theme-toggle');function syncTheme(){const night=document.documentElement.dataset.theme==='night';themeButton.setAttribute('aria-pressed',String(night));themeButton.setAttribute('aria-label',night?'Switch to day view':'Switch to night view');themeButton.innerHTML='<span aria-hidden="true">'+(night?'☀':'☾')+'</span><span class="theme-label">'+(night?'Day':'Night')+'</span>'}syncTheme();themeButton.addEventListener('click',()=>{const next=document.documentElement.dataset.theme==='night'?'day':'night';document.documentElement.dataset.theme=next;try{localStorage.setItem('vijay-theme',next)}catch(e){}syncTheme()});
+const motionButton=document.getElementById('motion-toggle');const designLoop=document.querySelector('.design-loop');motionButton.addEventListener('click',()=>{const paused=designLoop.classList.toggle('is-paused');motionButton.textContent=paused?'▶':'Ⅱ';motionButton.setAttribute('aria-label',paused?'Play design animation':'Pause design animation')});const loopObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(!entry.isIntersecting){designLoop.classList.add('offscreen')}else{designLoop.classList.remove('offscreen')}}));loopObserver.observe(designLoop);
+// Scroll position changes only a small horizontal offset; visitors keep native scrolling.
+const showcases=[...document.querySelectorAll('[data-parallax]')];const motionPreference=matchMedia('(prefers-reduced-motion: reduce)');const parallaxButton=document.getElementById('parallax-toggle');let parallaxOff=false,parallaxFrame=0;const activeShowcases=new Set();function renderParallax(){parallaxFrame=0;if(parallaxOff||motionPreference.matches)return;const vh=window.innerHeight;activeShowcases.forEach(section=>{const view=section.querySelector('.showcase-viewport'),track=section.querySelector('.showcase-track'),rect=section.getBoundingClientRect();const progress=Math.max(0,Math.min(1,(vh-rect.top)/(vh+rect.height)));const travel=Math.min(Math.max(0,track.scrollWidth-view.clientWidth-35),view.clientWidth*(innerWidth<761?.55:.38));const x=section.dataset.parallax==='right'?-travel*(1-progress):-travel*progress;track.style.setProperty('--parallax-x',x.toFixed(1)+'px')})}function requestParallax(){if(!parallaxFrame)parallaxFrame=requestAnimationFrame(renderParallax)}const showcaseObserver=new IntersectionObserver(entries=>{entries.forEach(entry=>entry.isIntersecting?activeShowcases.add(entry.target):activeShowcases.delete(entry.target));requestParallax()},{rootMargin:'80px'});showcases.forEach(section=>{showcaseObserver.observe(section);const view=section.querySelector('.showcase-viewport');section.querySelector('.scroll-prev').addEventListener('click',()=>view.scrollBy({left:-view.clientWidth*.75,behavior:motionPreference.matches?'instant':'smooth'}));section.querySelector('.scroll-next').addEventListener('click',()=>view.scrollBy({left:view.clientWidth*.75,behavior:motionPreference.matches?'instant':'smooth'}))});window.addEventListener('scroll',requestParallax,{passive:true});window.addEventListener('resize',requestParallax,{passive:true});motionPreference.addEventListener('change',requestParallax);parallaxButton.addEventListener('click',()=>{parallaxOff=!parallaxOff;document.documentElement.classList.toggle('motion-off',parallaxOff);parallaxButton.textContent=parallaxOff?'Motion off':'Motion on';parallaxButton.setAttribute('aria-label',parallaxOff?'Turn on scroll effects':'Turn off scroll effects');parallaxButton.setAttribute('aria-pressed',String(parallaxOff));requestParallax()});
 
-  /* --- Remix the mood (palettes from ChatGPT's build) --- */
-  var moods = [
-    ['#e9e9df', '#552b25', '#efc29e', '#d8ef70'],
-    ['#e4dfec', '#463557', '#f1d5bf', '#f4b191'],
-    ['#d9e6e5', '#214a43', '#e8e5b4', '#e9c563']
-  ];
-  var mood = 0;
-  var remixBtn = document.getElementById('remix');
-  if (remixBtn) {
-    remixBtn.addEventListener('click', function () {
-      mood = (mood + 1) % moods.length;
-      var m = moods[mood];
-      var playground = document.querySelector('.playground');
-      if (playground) playground.style.background = m[0];
-      var tile = document.querySelector('.brand-tile');
-      if (tile) { tile.style.background = m[1]; tile.style.color = m[2]; }
-      var phone = document.querySelector('.phone');
-      if (phone) phone.style.background = m[3];
-    });
-  }
+showcases.forEach(section=>{const view=section.querySelector('.showcase-viewport');const manual=()=>section.classList.add('manual-browse');view.addEventListener('pointerdown',manual,{passive:true});view.addEventListener('keydown',manual);view.addEventListener('focus',manual);section.querySelectorAll('.showcase-controls button:not(#parallax-toggle)').forEach(button=>button.addEventListener('click',manual));});
+// A real range control keeps the comparison usable with touch and keyboard.
+const comparison=document.querySelector('.compare-canvas'),revealInput=document.getElementById('design-reveal');function setComparison(value){revealInput.value=value;comparison.style.setProperty('--reveal',value+'%');revealInput.setAttribute('aria-valuetext',value+' percent ordinary design, '+(100-value)+' percent redesigned')}revealInput.addEventListener('input',()=>setComparison(Number(revealInput.value)));document.querySelectorAll('[data-compare]').forEach(button=>button.addEventListener('click',()=>setComparison(Number(button.dataset.compare))));
+// A short visual story, with explicit controls as well as scroll activation.
+const processPreview=document.querySelector('.process-preview'),processNotes=['01 / First, the possibilities.','02 / Then, a direction that feels like you.','03 / Finally, ready for your next chapter.'];function setProcess(index){processPreview.dataset.stage=index;document.querySelector('.process-stage-note').textContent=processNotes[index];document.querySelectorAll('[data-process]').forEach(button=>button.setAttribute('aria-pressed',String(Number(button.dataset.process)===index)));document.querySelectorAll('[data-process-step]').forEach(step=>step.classList.toggle('active',Number(step.dataset.processStep)===index))}setProcess(0);document.querySelectorAll('[data-process]').forEach(button=>button.addEventListener('click',()=>setProcess(Number(button.dataset.process))));const processObserver=new IntersectionObserver(entries=>{const visible=entries.filter(e=>e.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio);if(visible[0])setProcess(Number(visible[0].target.dataset.processStep))},{rootMargin:'-25% 0px -20% 0px',threshold:[.2,.5,.8]});document.querySelectorAll('[data-process-step]').forEach(step=>processObserver.observe(step));
+// Dimensional logo cards respond to browsing; native scrolling stays intact.
+const logoViewport=document.querySelector('.showcase-logos .showcase-viewport'),logoCards=[...document.querySelectorAll('.concept-logo')];let logoFrame=0;function updateLogoDepth(){logoFrame=0;if(motionPreference.matches)return;const bounds=logoViewport.getBoundingClientRect(),center=bounds.left+bounds.width/2;let nearest=null,nearestDistance=Infinity;logoCards.forEach(card=>{const r=card.getBoundingClientRect(),distance=(r.left+r.width/2-center)/Math.max(1,bounds.width/2);card.style.setProperty('--logo-turn',Math.max(-18,Math.min(18,-distance*17)).toFixed(1)+'deg');card.style.setProperty('--logo-scale',String(1-Math.min(.12,Math.abs(distance)*.1)));if(Math.abs(distance)<nearestDistance){nearest=card;nearestDistance=Math.abs(distance)}});logoCards.forEach(card=>card.classList.toggle('is-focused',card===nearest))}function requestLogoDepth(){if(!logoFrame)logoFrame=requestAnimationFrame(updateLogoDepth)}logoViewport.addEventListener('scroll',requestLogoDepth,{passive:true});window.addEventListener('resize',requestLogoDepth,{passive:true});logoCards.forEach(card=>{const centerCard=()=>{document.querySelector('.showcase-logos').classList.add('manual-browse');logoViewport.scrollTo({left:Math.max(0,card.getBoundingClientRect().left-logoViewport.getBoundingClientRect().left+logoViewport.scrollLeft-(logoViewport.clientWidth-card.offsetWidth)/2),behavior:motionPreference.matches?'instant':'smooth'});requestLogoDepth()};card.addEventListener('click',centerCard);card.addEventListener('keydown',event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();centerCard()}})});const depthObserver=new IntersectionObserver(entries=>{if(entries[0].isIntersecting)requestLogoDepth()});depthObserver.observe(logoViewport);
+// Navigation follows reading position; the line provides a quiet sense of progress.
+const chapterLinks=[...document.querySelectorAll('[data-chapter]')];let readingFrame=0;function updateReading(){readingFrame=0;const max=document.documentElement.scrollHeight-innerHeight;document.documentElement.style.setProperty('--reading-progress',String(max>0?scrollY/max:0));let current=chapterLinks[0];chapterLinks.forEach(link=>{const section=document.getElementById(link.dataset.chapter);if(section&&section.getBoundingClientRect().top<innerHeight*.35)current=link});chapterLinks.forEach(link=>{const active=link===current;link.classList.toggle('current',active);if(active)link.setAttribute('aria-current','location');else link.removeAttribute('aria-current')});if(activeShowcases.has(document.querySelector('.showcase-logos')))requestLogoDepth()}window.addEventListener('scroll',()=>{if(!readingFrame)readingFrame=requestAnimationFrame(updateReading)},{passive:true});updateReading();
+const revealObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('entered');revealObserver.unobserve(entry.target)}}),{threshold:.12});if(!motionPreference.matches)document.querySelectorAll('.section-heading,.showcase-heading,.difference-heading').forEach(element=>{if(element.getBoundingClientRect().top>innerHeight){element.classList.add('experience-reveal','ready');revealObserver.observe(element)}});
 
-  /* --- Lead form -> WhatsApp --- */
-  var form = document.getElementById('lead-form');
-  if (form) {
-    var businessInput = document.getElementById('business');
-    form.addEventListener('submit', function (event) {
-      event.preventDefault();
-      var business = businessInput.value.trim();
-      if (!business) {
-        businessInput.setCustomValidity('Please enter your business name.');
-        businessInput.reportValidity();
-        return;
-      }
-      var service = document.getElementById('service').value;
-      var link = document.getElementById('link').value.trim();
-      var message = 'Hi Vijay! I\u2019d love a free design preview.\n\nBusiness: ' + business +
-        '\nLooking for: ' + service +
-        (link ? '\nWebsite / Instagram: ' + link : '') +
-        '\n\nWhat would you suggest for my business?';
-      window.location.href = 'https://wa.me/919041961669?text=' + encodeURIComponent(message);
-    });
-    businessInput.addEventListener('input', function (e) { e.target.setCustomValidity(''); });
-  }
-
-  /* --- Night / day theme --- */
-  var themeButton = document.getElementById('theme-toggle');
-  function syncTheme() {
-    var night = document.documentElement.dataset.theme === 'night';
-    themeButton.setAttribute('aria-pressed', String(night));
-    themeButton.setAttribute('aria-label', night ? 'Switch to day view' : 'Switch to night view');
-    themeButton.innerHTML = '<span aria-hidden="true">' + (night ? '\u2600' : '\u263E') + '</span> <span class="theme-label">' + (night ? 'Day' : 'Night') + '</span>';
-  }
-  if (themeButton) {
-    syncTheme();
-    themeButton.addEventListener('click', function () {
-      var next = document.documentElement.dataset.theme === 'night' ? 'day' : 'night';
-      document.documentElement.dataset.theme = next;
-      try { localStorage.setItem('vijay-theme', next); } catch (e) {}
-      syncTheme();
-    });
-  }
-
-  /* --- Hero design-loop scenes --- */
-  var scenes = document.querySelectorAll('.scene');
-  var sceneDots = document.querySelectorAll('[data-scene-btn]');
-  var currentScene = 0;
-  var sceneTimer = null;
-  var scenePaused = false;
-  function showScene(i) {
-    currentScene = i;
-    scenes.forEach(function (s) { s.classList.toggle('active', Number(s.dataset.scene) === i); });
-    sceneDots.forEach(function (d) { d.classList.toggle('active', Number(d.dataset.sceneBtn) === i); });
-  }
-  function startSceneTimer() {
-    stopSceneTimer();
-    if (prefersReduced.matches || scenePaused) return;
-    sceneTimer = setInterval(function () { showScene((currentScene + 1) % scenes.length); }, 3500);
-  }
-  function stopSceneTimer() { if (sceneTimer) { clearInterval(sceneTimer); sceneTimer = null; } }
-  if (scenes.length) {
-    sceneDots.forEach(function (d) {
-      d.addEventListener('click', function () { showScene(Number(d.dataset.sceneBtn)); startSceneTimer(); });
-    });
-    var motionButton = document.getElementById('motion-toggle');
-    if (motionButton) {
-      motionButton.addEventListener('click', function () {
-        scenePaused = !scenePaused;
-        motionButton.textContent = scenePaused ? '\u25B6' : '\u2161';
-        motionButton.setAttribute('aria-label', scenePaused ? 'Play design animation' : 'Pause design animation');
-        if (scenePaused) stopSceneTimer(); else startSceneTimer();
-      });
-    }
-    var loop = document.getElementById('design-loop');
-    if (loop && 'IntersectionObserver' in window) {
-      new IntersectionObserver(function (entries) {
-        if (entries[0].isIntersecting) startSceneTimer(); else stopSceneTimer();
-      }).observe(loop);
-    }
-    startSceneTimer();
-  }
-
-  /* --- Before / after comparison --- */
-  var canvas = document.getElementById('compare-canvas');
-  var revealInput = document.getElementById('design-reveal');
-  function setComparison(value) {
-    revealInput.value = value;
-    canvas.style.setProperty('--reveal', value + '%');
-    revealInput.setAttribute('aria-valuetext', value + ' percent ordinary design, ' + (100 - value) + ' percent redesigned');
-  }
-  if (canvas && revealInput) {
-    revealInput.addEventListener('input', function () { setComparison(Number(revealInput.value)); });
-    document.querySelectorAll('[data-compare]').forEach(function (button) {
-      button.addEventListener('click', function () { setComparison(Number(button.dataset.compare)); });
-    });
-  }
-
-  /* --- Reading progress + chapter nav --- */
-  var chapterLinks = Array.prototype.slice.call(document.querySelectorAll('[data-chapter]'));
-  var readingFrame = 0;
-  function updateReading() {
-    readingFrame = 0;
-    var max = document.documentElement.scrollHeight - innerHeight;
-    document.documentElement.style.setProperty('--reading-progress', String(max > 0 ? scrollY / max : 0));
-    var current = chapterLinks[0];
-    chapterLinks.forEach(function (link) {
-      var section = document.getElementById(link.dataset.chapter);
-      if (section && section.getBoundingClientRect().top < innerHeight * 0.35) current = link;
-    });
-    chapterLinks.forEach(function (link) {
-      var active = link === current;
-      link.classList.toggle('current', active);
-      if (active) link.setAttribute('aria-current', 'location');
-      else link.removeAttribute('aria-current');
-    });
-  }
-  window.addEventListener('scroll', function () {
-    if (!readingFrame) readingFrame = requestAnimationFrame(updateReading);
-  }, { passive: true });
-  updateReading();
-
-  /* --- Scroll reveal --- */
-  var revealObserver = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (entry.isIntersecting) { entry.target.classList.add('in'); revealObserver.unobserve(entry.target); }
-    });
-  }, { threshold: 0.12 });
-  if (!prefersReduced.matches) {
-    document.querySelectorAll('.reveal').forEach(function (el) {
-      if (el.getBoundingClientRect().top > innerHeight) revealObserver.observe(el);
-      else el.classList.add('in');
-    });
-  } else {
-    document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); });
-  }
-  /* Reveal fallback: never leave content hidden if JS ran but IO missed */
-  setTimeout(function () {
-    document.querySelectorAll('.reveal:not(.in)').forEach(function (el) { el.classList.add('in'); });
-  }, 2500);
-
-  /* --- Mobile CTA hides near the contact section --- */
-  var sticky = document.getElementById('mobile-cta');
-  var contact = document.getElementById('contact');
-  if (sticky && contact && 'IntersectionObserver' in window) {
-    new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) { sticky.classList.toggle('hide', entry.isIntersecting); });
-    }, { threshold: 0.05 }).observe(contact);
-  }
-
-  /* --- Back to top + year --- */
-  var backTop = document.getElementById('back-top');
-  if (backTop) {
-    backTop.addEventListener('click', function (e) {
-      e.preventDefault();
-      window.scrollTo({ top: 0, behavior: prefersReduced.matches ? 'instant' : 'smooth' });
-    });
-  }
-  var yearEl = document.getElementById('year');
-  if (yearEl) yearEl.textContent = new Date().getFullYear();
-})();
+const finePointer=matchMedia('(hover: hover) and (pointer: fine)');let deskFrame=0,deskPoint=null;designLoop.addEventListener('pointermove',event=>{if(!finePointer.matches||motionPreference.matches)return;deskPoint={x:event.clientX,y:event.clientY};if(!deskFrame)deskFrame=requestAnimationFrame(()=>{deskFrame=0;const r=designLoop.getBoundingClientRect();designLoop.style.setProperty('--desk-y',((deskPoint.x-r.left)/r.width*2-1)*3+'deg');designLoop.style.setProperty('--desk-x',-((deskPoint.y-r.top)/r.height*2-1)*3+'deg')})},{passive:true});designLoop.addEventListener('pointerleave',()=>{designLoop.style.setProperty('--desk-x','0deg');designLoop.style.setProperty('--desk-y','0deg')});
