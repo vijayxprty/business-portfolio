@@ -8,4 +8,4 @@ Services: logo design, banner design, website design, app design, landing page d
 
 Live: https://vijayxprty.github.io/business-portfolio/
 
-Contact: jaynishad2010@gmail.com · +91 90419 61669 · WhatsApp https://wa.me/919041961669
+Contact: vijay.design360@gmail.com · +91 90419 61669 · WhatsApp https://wa.me/919041961669

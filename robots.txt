@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://vijayxprty.github.io/business-portfolio/sitemap.xml
